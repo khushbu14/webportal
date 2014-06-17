@@ -154,9 +154,10 @@ def contributor_profile_topic_detail(request,class_num,sub,topics,id):
 	This function takes the request of user and direct it to profile page which consists of his comments of reviewer on a specified topic of a subject of a specific class.
 	"""	
 	context = RequestContext(request)
-	contributor= Contributor.objects.get(user=request.user)
-	comment = Comment.objects.filter(subject_id=id)
-	context_dict = {'comment': comment, 'class_num':class_num, 'sub':sub,'contributor':contributor,'topics':topics,'id':id}
+	contributor= Contributor.objects.get(user=request.user)   
+        subject = Subject.objects.get(pk=id)
+	#uploads = Subject.objects.filter(class_number__class_number=class_num).filter(name=sub).filter(contributor__user=request.user)
+	context_dict = {'class_num':class_num, 'subject':subject,'contributor':contributor,'topics':topics,'id':id}
 	return render_to_response('contributor_topic_detail.html', context_dict, context)
 
 @login_required
