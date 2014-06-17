@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<br/><br/><br/><br/><br/><br/><br/>
+
+<div class="container" style="padding-top: 8%;padding-bottom: 8%;">
+
 <div class="row">
   	<div class="col-md-12">
    		 
     			<div class="row">
       				<div class="col-md-8 col-md-offset-1"><br/><br/>
-				<h4>comments corresponding to class {{class_num}}-{{sub_name}}--{{sub_topic}}</h4>
+
+				<h4>comments corresponding to class {{class_num}}-{{sub_name}}--{{topics}}</h4>
+
 				{% for i in comment %}
 				<p class="bg-success">
 					{{i.comment}}</p>
