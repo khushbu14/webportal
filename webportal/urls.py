@@ -12,15 +12,20 @@ urlpatterns = patterns(
     url(r'^webapp/', include('webapp.urls')),
     # url(r'^user/', include('django.contrib.auth.urls'),
     url(r'^about/$', 'webapp.views.about', name='about'),
-    url(r'^contributor/profile/edit/$', 'webapp.views.contributor_profile_edit',),
+    url(r'^contributor/profile/edit/$',
+        'webapp.views.contributor_profile_edit',),
     
     # this takes us to contributor profile
-    url(r'^contributor/profile/$','webapp.views.contributor_profile'), 
+    url(r'^contributor/profile/$','webapp.views.contributor_profile'),
     url(r'^contributor/upload/$','webapp.views.contributor_upload'),
-    url(r'^contributor/profile/(?P<class_num>\d+)/$','webapp.views.contributor_profile_subject'), 
-    url(r'^contributor/profile/(?P<class_num>\d+)/(?P<sub>[\w ]+)/$','webapp.views.contributor_profile_topic'),
-    url(r'^contributor/profile/(?P<class_num>\d+)/(?P<sub>[\w ]+)/(?P<topics>[\w ]+)/(?P<id>\d+)/$','webapp.views.contributor_profile_comment'),
-    url(r'^contributor/profile/(?P<class_num>\d+)/(?P<sub>[\w ]+)/(?P<topics>[\w ]+)/(?P<id>\d+)/detail/$','webapp.views.contributor_profile_topic_detail'),
+    url(r'^contributor/profile/(?P<class_num>\d+)/$',
+        'webapp.views.contributor_profile_subject'),
+    url(r'^contributor/profile/(?P<class_num>\d+)/(?P<sub>[\w ]+)/$',
+        'webapp.views.contributor_profile_topic'),
+    url(r'^contributor/profile/(?P<class_num>\d+)/(?P<sub>[\w ]+)/(?P<topics>[\w ]+)/(?P<id>\d+)/$',
+        'webapp.views.contributor_profile_comment'),
+    url(r'^contributor/profile/(?P<class_num>\d+)/(?P<sub>[\w ]+)/(?P<topics>[\w ]+)/(?P<id>\d+)/detail/$',
+        'webapp.views.contributor_profile_topic_detail'),
     
     url(r'^reviewer/profile/edit/$', 'webapp.views.reviewer_profile_edit'),
 
@@ -28,10 +33,14 @@ urlpatterns = patterns(
     # this takes us to reviewer profile
     url(r'^reviewer/profile/$','webapp.views.reviewer_profile'),
     url(r'^reviewer/past/approvals/$','webapp.views.reviewer_past_approvals'),
-    url(r'^reviewer/profile/(?P<class_num>\d+)/$','webapp.views.reviewer_profile_subject'), 
-    url(r'^reviewer/profile/(?P<class_num>\d+)/(?P<sub>[\w ]+)/$','webapp.views.reviewer_profile_topic'),
-    url(r'^reviewer/profile/(?P<class_num>\d+)/(?P<sub>[\w ]+)/(?P<topics>[\w ]+)/(?P<id>\d+)/$','webapp.views.reviewer_profile_comment'),
-    url(r'^reviewer/profile/(?P<class_num>\d+)/(?P<sub>[\w ]+)/(?P<topics>[\w ]+)/(?P<id>\d+)/detail/$','webapp.views.reviewer_profile_topic_detail'),
+    url(r'^reviewer/profile/(?P<class_num>\d+)/$',
+        'webapp.views.reviewer_profile_subject'), 
+    url(r'^reviewer/profile/(?P<class_num>\d+)/(?P<sub>[\w ]+)/$',
+        'webapp.views.reviewer_profile_topic'),
+    url(r'^reviewer/profile/(?P<class_num>\d+)/(?P<sub>[\w ]+)/(?P<topics>[\w ]+)/(?P<id>\d+)/$',
+        'webapp.views.reviewer_profile_comment'),
+    url(r'^reviewer/profile/(?P<class_num>\d+)/(?P<sub>[\w ]+)/(?P<topics>[\w ]+)/(?P<id>\d+)/detail/$',
+        'webapp.views.reviewer_profile_topic_detail'),
     
     
     url(r'^login/$','webapp.views.userlogin'),
@@ -52,7 +61,11 @@ urlpatterns = patterns(
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # this is used to display the content page of either the contributor or the reviewer
+
+    url(r'^content/(?P<class_num>\d+)/(?P<sub>[\w ]+)/(?P<topics>[\w ]+)/(?P<id>\d+)/$','webapp.views.topic'),
+
     url(r'^content/(?P<lang>[\w ]+)/$','webapp.views.content'),
+    url(r'^content/(?P<class_num>\d+)/(?P<sub>[\w ]+)/(?P<topics>[\w ]+)/(?P<id>\d+)/$','webapp.views.topic'),
     url(r'^user_detail/$','webapp.views.detail_user'),
     # this is used for selecting language of the contents
     url(r'^language/$','webapp.views.language_select'),
@@ -63,11 +76,16 @@ urlpatterns = patterns(
     
     url(r'^search/(?P<lang>[\w ]+)/$','webapp.views.search'),
     url(r'^contact/$', 'webapp.views.contact'),
+
+
+    url(r'^developer_team/$','webapp.views.developer_team'),
 )
 
 
-if settings.DEBUG:
+if settings.DEBUG is False:
     # static files (images, css, javascript, etc.)
     urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-        'document_root': settings.MEDIA_ROOT}))
+        'django.views.static',
+        (r'^media/(?P<path>.*)$',
+         'serve',
+         {'document_root': settings.MEDIA_ROOT}),)

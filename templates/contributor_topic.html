@@ -2,66 +2,76 @@
 {% load static %}
 {% block content %}
 <div class="container" style= "padding-top: 5%; padding-bottom:5%">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="row">
-      	<div class="col-md-8" style= " background-color:#d5dce1; margin-top:8%">
-          
-          
-	  <h3>contribution in class {{class_num}}</h3>
- 	  {% if uploads %}
-	  <div class="table-responsive">
-	    <table class="table table-hover" id="uploads">
-	      <tr class="success">
-    		<td><strong>subject</strong></td>
-    		<td><strong>Topic</strong></td>
-		<td><strong>Summary</strong></td>
-		<td><strong>PDF</strong></td>
-		<td><strong>Video</strong></td>
-		<td><strong>animation</strong></td>
+<div class="row">
+  	<div class="col-md-12">
+   		 <div class="row">
+      				<div class="col-md-8" style= " background-color:#d5dce1; margin-top:8%">
+                                
+                               
+				<h3>contribution in class {{class_num}}</h3>
+ 			{% if uploads %}
+				<div class="table-responsive">
+				<table class="table table-hover" id="tablepaging" class="yui">
+				
+				 <tr class="success">
+    				    <td><strong>subject</strong></td>
+    				    <td><strong>Topic</strong></td>
+			            <td><strong>Summary</strong></td>
+			            <td><strong>PDF</strong></td>
+				    <td><strong>Video</strong></td>
+				    <td><strong>animation</strong></td>
+					
+  				 </tr></div>
+  				{% for i in uploads %}
+				 <tr class="active">
 		
-  	      </tr>
-  	      {% for i in uploads %}
-	      <tr class="active">
-		
-   		<td><strong>{{i.name}}</strong></a>
-</p>
-</td>
-
-<td><a href="/contributor/profile/{{class_num}}/{{sub}}/{{i.topic}}/{{i.id}}/"><strong>{{i.topic}}</strong></a>
-</td>
-
-<td>
-  {% if i.summary|length >= 100 %}
-  {{i.summary|truncatewords:10}}<a href="/contributor/profile/{{class_num}}/{{sub}}/{{i.topic}}/{{i.id}}/detail">Read More ...</a>
-  {% else %}
-  {{i.summary}}
-  {% endif %}
-</td>
-
-<td>
-  
-  {% if i.pdf %}
-  
-  <a href="/media/{{i.pdf}}" target="blank"><i class="fa fa-file-pdf-o fa-2x"></i></a>
-  {% else %}<i class="fa fa-ban fa-2x"></i>
-  {% endif %}	</td><td>
-  {% if i.video %}
-  <a href="/media/{{i.video}}" target="blank"><i class="fa fa-file-video-o fa-2x"></i></a>
-  {% else %}<i class="fa fa-ban fa-2x"></i>
-  {% endif %}	</td><td>
-  {% if i.animation %}
-  <a href="/media/{{i.animation}}" target="blank"><i class="fa fa-file-image-o fa-2x"></i></a>
-  
-  {% else %}<i class="fa fa-ban fa-2x"></i>
-  {% endif %}	
-  
-</td>         
-</tr>
-
-{% endfor %}
-</table></div>
-</div>
+   				 <td><strong>{{i.name}}</strong></a>
+				      </p>
+				    </td>
+				    
+				    <td><a href="/contributor/profile/{{class_num}}/{{sub}}/{{i.topic}}/{{i.id}}/"><strong>{{i.topic}}</strong></a>
+				    </td>
+				    
+				    <td>
+				    {% if i.summary|length >= 100 %}
+				      {{i.summary|truncatewords:10}}<a href="/contributor/profile/{{class_num}}/{{sub}}/{{i.topic}}/{{i.id}}/detail">Read More ...</a>
+				    {% else %}
+					{{i.summary}}
+				    {% endif %}
+				    </td>
+				    
+				    <td>
+				    
+				    {% if i.pdf %}
+				   
+				      <a href="/media/{{i.pdf}}" target="blank"><i class="fa fa-file-pdf-o fa-2x"></i></a>
+			            {% else %}<i class="fa fa-ban fa-2x"></i>
+				    {% endif %}	</td><td>
+				    {% if i.video %}
+					<a href="/media/{{i.video}}" target="blank"><i class="fa fa-file-video-o fa-2x"></i></a>
+					{% else %}<i class="fa fa-ban fa-2x"></i>
+				    {% endif %}	</td><td>
+				    {% if i.animation %}
+					<a href="/media/{{i.animation}}" target="blank"><i class="fa fa-file-image-o fa-2x"></i></a>
+					
+				    {% else %}<i class="fa fa-ban fa-2x"></i>
+				    {% endif %}	
+				       
+				</td>         
+				  </tr>
+				
+			         {% endfor %}
+				</table>
+                                 <ul class="pagination" id="pageNavPosition"></ul> 
+				{% else %}
+  				<p>Nothing to display.</p>
+  				{% endif %}
+                                 
+                            
+    		
+			        </div></div>
+                                 
+                                
 
 
 
@@ -86,7 +96,6 @@
 
 </div>
 
-<ul class="pagination" id="unordered-code-list"></ul> 
 {% else %}
 <p>Nothing to display.</p>
 {% endif %}
@@ -98,6 +107,10 @@
 <script src="{% static 'js/paging.js' %}"></script>
 <script type="text/javascript">
   var pager = new Pager('uploads', 6, 'unordered-code-list');
+ var pager = new Pager('tablepaging', 5);
+pager.init();
+pager.showPageNav('pager', 'pageNavPosition');
+pager.showPage(1);
 </script>
 
 {% endblock content %}
