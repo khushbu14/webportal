@@ -154,7 +154,26 @@ def password_change(request):
 	    return render_to_response('password_change.html',context)
     else:
         return render_to_response('password_change.html', context)
-    
+
+def password_reset(request):
+    context= RequestContext(request)
+    if request.method == 'POST':
+        # email_subject = "[aakashschooleducation.org] Contact Us"
+        # email_message = "Sender Name: " + contactform.name + "\n \
+# 	\n" + contactform.message
+        # send_mail(email_subject, email_message,
+        #           contactform.email,
+        #          [
+        #              'iclcoolster@gmail.com',
+        #              'Aakashprojects.iitb@gmail.com',
+        #              'aakashmhrd@gmail.com',
+        #          ],
+        #	          fail_silently=False)
+        messages.success(request, "Thank you for your reply. We\
+ will get back to you soon.")
+	return render_to_response('password_reset.html',context)
+    else:
+        return render_to_response('password_reset.html',context)
 
 def contributor_profile(request):
     """
@@ -398,6 +417,10 @@ specific class.
         print "reviewer has reviewed"
         print subject.review
         print subject.id
+	url = reverse('webapp.views.reviewer_profile_topic', kwargs={
+                'class_num': class_num, 'sub': sub}
+            )
+        return HttpResponseRedirect(url)	
     filter_sub = Subject.objects.filter(class_number__class_number=class_num)
     uploads = filter_sub.filter(name=sub).filter(review__lt=3)
     uploads = uploads.order_by('topic')
@@ -546,60 +569,52 @@ from admin.")
 
 
 def reviewer_signup(request):
-    """
-    Argument:
-
-    `request`: Request from reviewer to sign up.
-
-    This function is used for a new revieweer to sign up.
-    """
+    """Request for new contributor to signup"""
     context = RequestContext(request)
     registered = False
     if request.method == 'POST':
-        print "we have a request to register"
-        user_form = UserForm(data=request.POST)
-        reviewer_form = ReviewerForm(data=request.POST)
+        print "we have a request to register"    
+	user_form = UserForm(data=request.POST)
+	reviewer_form = ReviewerForm(data=request.POST)
         if user_form.is_valid() and reviewer_form.is_valid():
-            user = user_form.save()
+	    user = user_form.save()
             print "Forms are Valid"
             print user.username
             print user.first_name
             user.set_password(user.password)
-            user.is_active = False
+	    user.is_active = False
             user.save()
             reviewer = reviewer_form.save(commit=False)
-            reviewer.user = user
+ 	    reviewer.user = user
             if 'picture' in request.FILES:
                 reviewer.picture = request.FILES['picture']
-            reviewer.save()
-            registered = True
-            email_subject = "New reviewer has registered"
-            email_message = """
+	    reviewer.save()                       
+	    registered = True
+            email_subject="New reviewer has registered"
+	    email_message="""
 New reviewer has registered.
 Details:
 Name:""" + user.first_name + """  """ + user.last_name + """"
 Email:""" + user.email + """
 Waiting for your your approval"""
-            # send_mail(email_subject, email_message, 'khushbu.ag23@gmail.com',
-            #           ['pri.chundawat@gmail.com'],fail_silently=False)
-            messages.success(
-                request,
-                "form successfully submitted. Waiting for activation  from \
-admin.")
-            return HttpResponseRedirect('webapp.views.reviewer_signup')
+	    #send_mail(email_subject, email_message, 'khushbu.ag23@gmail.com', ['pri.chundawat@gmail.com'],fail_silently=False)
+	    messages.success(
+	        request,
+		"form successfully submitted. Waiting for activation  from \
+ admin.")
+ 	    return HttpResponseRedirect(reverse('webapp.views.reviewer_signup'))
         else:
-            if reviewer_form.errors or user_form.errors:
-                print user_form.errors, reviewer_form.errors
+	    if reviewer_form.errors or user_form.errors:
+	        print user_form.errors, reviewer_form.errors
     else:
         reviewer_form = ReviewerForm()
-        user_form = UserForm()
+	user_form = UserForm()	
     context_dict = {
-        'user_form': user_form,
-        'reviewer_from': reviewer_form,
-        'registered': registered,
-    }
+        'user_form':user_form,
+        'reviewer_form': reviewer_form,
+        'registered': registered}
     return render_to_response('webapp/reviewer_signup.html',
-                              context_dict, context)
+ 			       context_dict, context)
 
 
 def user_logout(request):
@@ -830,23 +845,23 @@ def search(request, lang):
         user = User.objects.get(username=request.user.username)
     except:
         user = None
-        query = request.GET['q']
-        filter_query = Subject.objects.filter(topic__icontains=query)
-        filter_lang = filter_query.filter(language__language=lang)
-        filter_review = filter_lang.filter(review__gte=3)
-        results_topic = filter_review.order_by('class_number')
-        filter_query = Subject.objects.filter(name__icontains=query)
-        filter_lang = filter_query.filter(language__language=lang)
-        filter_review = filter_lang.filter(review__gte=3)
-        results_name = filter_review.order_by('class_number')
-        template = loader.get_template('search.html')
-        context = Context({'query': query,
-                           'results_topic': results_topic,
-                           'results_name': results_name,
-                           'lang': lang,
-                           'user': user})
-        response = template.render(context)
-        return HttpResponse(response)
+    query = request.GET['q']
+    filter_query = Subject.objects.filter(topic__icontains=query)
+    filter_lang = filter_query.filter(language__language=lang)
+    filter_review = filter_lang.filter(review__gte=3)
+    results_topic = filter_review.order_by('class_number')
+    filter_query = Subject.objects.filter(name__icontains=query)
+    filter_lang = filter_query.filter(language__language=lang)
+    filter_review = filter_lang.filter(review__gte=3)
+    results_name = filter_review.order_by('class_number')
+    template = loader.get_template('search.html')
+    context = Context({'query': query,
+                       'results_topic': results_topic,
+                       'results_name': results_name,
+                       'lang': lang,
+                       'user': user})
+    response = template.render(context)
+    return HttpResponse(response)
 
 
 def detail_user(request):

@@ -43,11 +43,8 @@ urlpatterns = patterns(
     url(r'^user/password/change/$','webapp.views.password_change'),
 
     # this is for resetting password by sending an email, when a user forgets password
-    url(r'^admin/password_reset/$','django.contrib.auth.views.password_reset',name='admin_password_reset'),
-    url(r'^admin/password_reset/done/$','django.contrib.auth.views.password_reset_done'),
-    url(r'^reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$','django.contrib.auth.views.password_reset_confirm'),
-    url(r'^reset/done/$','django.contrib.auth.views.password_reset_complete'),
-
+    url(r'^user/password_reset/$','webapp.views.password_reset'),
+    
 
     url(r'^contributor/signup/$','webapp.views.contributor_signup'),
     url(r'^reviewer/signup/$','webapp.views.reviewer_signup'),
