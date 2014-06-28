@@ -632,7 +632,7 @@ Waiting for your your approval"""
                 request,
                 "Form successfully submitted. Waiting for activation \
 from admin.")
-            return HttpResponseRedirect('webapp.views.contributor_signup')
+            return HttpResponseRedirect(reverse('webapp.views.contributor_signup'))
         else:
             if contributor_form.errors or user_form.errors:
                 print user_form.errors, contributor_form.errors
