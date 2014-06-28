@@ -301,6 +301,86 @@ takes him to his profile or enables him to logout.
 
    Home page (before logging in)
 
+
+
+*
+.. figure:: _static/img/homepage1.png
+   :height: 700 px
+   :width: 1000 px
+   :scale: 60 %
+   :alt: Home Page
+   :align: center
+
+   Home page (after logging in)
+
+
+
+
+**Contact Us**
+  
+  Clicking on this link redirects a user to a new page with a contact us form using which the user can contact the site administrators.
+
+
+  ``Example:``
+
+.. figure:: _static/img/contactus.png
+   :height: 700 px
+   :width: 1000 px
+   :scale: 60 %
+   :alt: Home Page
+   :align: center
+
+   Contact Us
+
+**About us**
+   Clicking on this link will give an overview of our website, regarding the main motive of this website and how will it help the students, and its relation to the Aakash School Education.
+
+  ``Example:``
+
+.. figure:: _static/img/aboutus.png
+   :height: 700 px
+   :width: 1000 px
+   :scale: 60 %
+   :alt: Home Page
+   :align: center
+
+   About Us
+
+
+**Content**
+  
+  This section opens on clicking the content button in the homepage. This section is for showing the entire contents which is present in the website. Initially we have to Select a language in which we want to see the content.
+  
+   ``Example:``
+
+.. figure:: _static/img/content.png
+   :height: 700 px
+   :width: 1000 px
+   :scale: 60 %
+   :alt: Home Page
+   :align: center
+
+   Select a language 
+
+*Contents corresponding to that language*
+
+  After selecting the language, the contents corresponding to that language will get displayed. It gets displayed in the form of a table with its fields as Class, Subject, Topic, Summary, PDF, Video and Animations present.
+
+    ``Example:``
+
+.. figure:: _static/img/content1.png
+   :height: 700 px
+   :width: 1000 px
+   :scale: 60 %
+   :alt: Home Page
+   :align: center
+
+   Contents corresponding to that language
+
+*Search button*
+
+  There is also an option to search in the contents page. The search box provides us an option to enter either the subject or the topic of a subject, to search for. On clicking the search icon, the given string is matched with the available contents and wherever there is a match, the corresponding topics are displayed on the next page. Also there is a button to Go Back to the content's page.
+=======
 .. figure:: _static/img/homepage1.png
    :height: 700 px
    :width: 1000 px
@@ -390,6 +470,7 @@ takes him to his profile or enables him to logout.
   string is matched with the available contents and wherever there is
   a match, the corresponding topics are displayed on the next
   page. Also there is a button to Go Back to the content's page.
+>>>>>>> c44149f78c18cafac29cfd9e59220907dc832b0f
 
     ``Example:``
 
@@ -404,6 +485,7 @@ takes him to his profile or enables him to logout.
 
 **Register**
 
+
   If a person wants to register in the website, he can do it
   here. There are 2 options for registering, i.e. As a Contributor or
   as a Reviewer.
@@ -416,6 +498,7 @@ takes him to his profile or enables him to logout.
   files(which checks if the contributor has the required qualification
   or not). Then he has to click the register button to get himself
   registered.
+>>>>>>> c44149f78c18cafac29cfd9e59220907dc832b0f
 
     ``Example:``
 
@@ -429,12 +512,17 @@ takes him to his profile or enables him to logout.
    Register as a contributor
 
 
+<<<<<<< HEAD
+*Register as a Reviewer*
+  This takes us to register in the website as a reviewer i.e. the person who is going to review the uploaded documents. He has to fill the form displayed in the page, the fields are username, firstname, lastname, email, password, profile picture and contact. Then he has to click the register button to get himself registered.  
+=======
 *Register as a Reviewer* This takes a user to register in the website
   as a reviewer i.e. the person who is going to review the uploaded
   documents. He has to fill the form displayed in the page, the fields
   are username, firstname, lastname, email, password, profile picture
   and contact. Then he has to click the register button to get himself
   registered.
+
 
     ``Example:``
 
@@ -446,6 +534,7 @@ takes him to his profile or enables him to logout.
    :align: center
 
    Register as a reviewer
+
 
 **Login** This is used by both the contributor and reviewer to
   Login. The user has to enter his username and password and the click
@@ -459,7 +548,6 @@ takes him to his profile or enables him to logout.
   would contain his old password. He can then later login and change
   his password ( discussed later)
 
-    ``Example:``
 
 .. figure:: _static/img/login.png
    :height: 700 px
@@ -479,6 +567,125 @@ takes him to his profile or enables him to logout.
 
    Forgot Password
 
+**Contributor's Profile**
+  After a contributor logs in, it takes him to his profile. Also he sees an "Upload more" button which when clicked takes him to the Upload Section. There are two more buttons i.e. Edit Profile and Change Password. These 3 buttons always remain fixed for the entire time when the contributor is logged in.
+The first page he sees after logging in is the List of classes in which documents are uploaded. 
+
+The second page contains the list of subjects under a particular class.
+
+The third page contains the list of topics under a particular subject and its details, such as Summary, PDF, Video and animation.
+
+The fourth page contains the list of comments under a particular topic.
+
+    ``Example:``
+
+.. figure:: _static/img/con.png
+   :height: 1000 px
+   :width: 1500 px
+   :scale: 50 %
+   :alt: Home Page
+   :align: center
+   
+   Contributor Profile
+
+*Upload More*
+   When a contributor clicks on the upload more button, it takes him to the upload more form which contains various fields such as language, class, Subject name, topic, pdf, video, animation and summary. Once he fills the entire form, he clicks on upload more which uploads the content. If any required field is missing, it raises error. If none of PDF, video or animation is present, it raises an error. Also, there is a limitation of file size of pdf, upon exceeding it raises an error.
+
+    ``Example:``
+
+.. figure:: _static/img/upload.png
+   :height: 700 px
+   :width: 1000 px
+   :scale: 60 %
+   :alt: Home Page
+   :align: center
+   
+   Upload more
+
+**Reviewer's Profile**
+   After a reviewer logs in, it takes him to his profile. Also he sees an "Past Approvals" button which when clicked takes him to his recent past approvals. There are two more buttons i.e. Edit Profile and Change Password. These 3 buttons always remain fixed for the entire time when the reviewer is logged in.
+The first page he sees after logging in is the list of classes in which documents are uploaded. 
+
+The second page contains the list of subjects under a particular class.
+
+The third page contains the list of topics under a particular subject and its details, such as Summary, PDF, Video and animation.
+Also, there is an approve button which the reviewer has to click if he feels that the uploaded documents are suitable for the topic and can be published. If a topic is approved by 3 or more reviewers, it is accepted as Published and it goes into the Content page.
+
+The fourth page contains the list of comments under a particular topic. Also, since the user is a reviewer, he has the freedom to add any number of comments, and view all the previous comments on the topic. Upon commenting, the date, time and username of the reviewer comes beneath the comment.
+
+
+    ``Example:``
+
+.. figure:: _static/img/rev.png
+   :height: 1000 px
+   :width: 1500 px
+=======
+>>>>>>> c44149f78c18cafac29cfd9e59220907dc832b0f
+   :scale: 50 %
+   :alt: Home Page
+   :align: center
+   
+   Reviewer Profile
+
+<<<<<<< HEAD
+*Past Approvals*
+   When a reviewer clicks on the "Past Approval" button, it takes him to the past approval table which contains various fields such as class, Subject name, topic, pdf, video, animation, summary and the Approved status. The content already approved by the reviewer in his profile will be displayed here.
+
+.. figure:: _static/img/past.png
+   :height: 800 px
+   :width: 1200 px
+   :scale: 60 %
+   :alt: Home Page
+   :align: center
+   
+   Past Approvals
+
+
+*  The next two sections are common both for contributor and reviewer
+
+**Edit Profile**
+  Upon clicking the edit profile button, the user (contributor or reviewer) gets an oppurtunity to edit his profile. The user form and the contributor/reviewer form is displayed, with an instance of the contributor/reviewer present. So if a user wants to edit anything, he can see his previous information and feed in the new information. The password has to be filled again and then he has to click Save Changes to save the changes.
+
+    ``Example:``
+
+.. figure:: _static/img/editcon.png
+   :height: 700 px
+   :width: 1000 px
+   :scale: 60 %
+   :alt: Home Page
+   :align: center
+   
+   Contributor Edit Profile
+
+.. figure:: _static/img/editrev.png
+   :height: 700 px
+   :width: 1000 px
+   :scale: 60 %
+   :alt: Home Page
+   :align: center
+   
+   Reviewer Edit Profile
+
+**Change Password**
+   Upon clicking this a new page opens up. The user has to enter his old password and if it matches correctly, he is given an option to change his password. He again has to type his new password for confirmation, if both are same, his password is changed and the success message is displayed. Else an error message pops up.
+
+.. figure:: _static/img/pass_change.png
+   :height: 700 px
+   :width: 1000 px
+   :scale: 60 %
+   :alt: Home Page
+   :align: center
+   
+   Password Change
+
+<<<<<<< HEAD
+=======
+- Students are given the opportunity to choose from various subjects and topics so that they can gain more knowledge. This is especially beneficial for those who live in rural areas that only have one or two educational facilities, which most of the time, offer limited course and program options for students. 
+
+- Another benefit of taking online tutorials, and probably the most popular one, would be that it offers flexibility to students. Because they can attend classes and courses whenever and wherever there is a computer and access to the internet, they can easily plan out a schedule that would work for them. 
+>>>>>>> a1c6c4fb3264fb0ca82ae9e2c8a7f12d099f9b65
+=======
+   Forgot Password
 
 **Contributor's Profile** After a contributor logs in, it takes him to
   his profile, where he sees an "Upload more" button which when
@@ -626,6 +833,7 @@ contributor so that he can improve his uploaded content.
    :align: center
    
    Password Change
+>>>>>>> c44149f78c18cafac29cfd9e59220907dc832b0f
 
 
 Conclusion
@@ -664,6 +872,8 @@ Conclusion
   courses and even earn their college degrees online.
 
 
+<<<<<<< HEAD
+=======
 - `<https://www.djangoproject.com/>`_
 
 - `<http://www.tangowithdjango.com/>`_
@@ -675,4 +885,9 @@ Conclusion
 - `<http://www.aakashlabs.org/>`_
 
 - `<http://sphinx-doc.org>`_
+<<<<<<< HEAD
+>>>>>>> a1c6c4fb3264fb0ca82ae9e2c8a7f12d099f9b65
+=======
 
+
+>>>>>>> c44149f78c18cafac29cfd9e59220907dc832b0f
