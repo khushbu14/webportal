@@ -52,19 +52,37 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    
                     <li class="page-scroll">
-                        <a href="/language/">Content</a>
-                    </li>                  
-
-              
-                     <li class="page-scroll">
                         <a href="/contact/">Contact Us</a>
                     </li>
+                    
+
+                    <li class="page-scroll">
+                        <a href="/language/">Content</a>
+
+                    </li>
+                     <li class="dropdown">
+		       <a href="#" class="dropdown-toggle"
+		          data-toggle="dropdown">More<b class="caret"></b></a>
+		       <ul class="dropdown-menu">
+			 <li><a href="#">Docs</a></li>
+			 <li><a href="/user_detail/">Users</a></li>
+			 <li><a href="/developer_team/">Develpoers</a></li>
+		       </ul>
+		     </li>
 
 	             {% if user.is_authenticated %}
 		     
-		              
+		    <!--  {% if contributor %} -->
+		    <!-- <li class="page-scroll"> -->
+		    <!--   <a href="/contributor/upload/">upload</a> -->
+		    <!-- </li> -->
+		    <!-- {% elif user in reviewer %} -->
+		    <!--   <li class="page-scroll"> -->
+		    <!-- 	<a href="/reviewer/profile/">review</li> -->
+		    <!--   {% endif %} -->
+
+            
 		    <li class="dropdown">
 		     <a href="" class="dropdown-toggle"
 		         data-toggle="dropdown">{{user.username}}<b class="caret"></b></a>
@@ -102,9 +120,7 @@
 			 <li><a href="/developer_team">Develpoers</a></li>
 		       </ul>
 		     </li>
- 		    
 
-		    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -116,7 +132,7 @@
     {% endblock content %}
 
 
-    <footer class="text-center ">
+    <footer class="text-center">
         <div class="footer-above">
             <div class="container">
                 <div class="row">
@@ -139,9 +155,7 @@
                         </ul>
                     </div>
 
-                   <div class="footer-col col-md-4"> <a href="/about" style="text-decoration: none;color:#FFFFFF"><h3>About Us</h3></a>
-                   <p>Aakash School Education is committed to offer students free access to academic resources.</p>
-                   </div>
+                   <div class="footer-col col-md-4"> <a href="/about/" style="text-decoration: none;color:#FFFFFF"><h3>About Us</h3></a></div>
 
                 </div>
             </div>
@@ -149,7 +163,7 @@
         <div class="footer-below">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12" style="margin-bottom:0px">
                         Copyright &copy; 2014 - Indian Institute of Technology Bombay
                     </div>
                 </div>
