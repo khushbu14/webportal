@@ -12,7 +12,7 @@
 {% if registered %}
         <strong>thank you for registering!</strong>
         <a href="webapp/home.html">Return to the homepage.</a><br />
-        {% else %}
+{% else %}
         <br>
 	<br>
 	<br>
@@ -47,7 +47,7 @@
             			{{ user_form.as_p }}
             			{{ contributor_form.as_p }}
                                 
-		            <center><input type="submit" name="submit" class="btn btn-primary" value="Register" /></center>
+		            <input type="submit" name="submit" class="btn btn-primary" value="Register" />
                             <br>
                             <br>
 		            </div>
