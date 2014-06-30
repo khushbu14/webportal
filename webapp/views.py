@@ -665,7 +665,7 @@ Waiting for your your approval"""
             #send_mail(email_subject, email_message, 'khushbu.ag23@gmail.com', ['pri.chundawat@gmail.com'],fail_silently=False)
 
             messages.success(request,"form successfully submitted. Waiting for activation  from admin.")
-            return HttpResponseRedirect(reverse('webapp.views.reviewer_signup'))
+            return HttpResponseRedirect('webapp.views.reviewer_signup')
         else:
             if reviewer_form.errors or user_form.errors:
                 print user_form.errors, reviewer_form.errors
